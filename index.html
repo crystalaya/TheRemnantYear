@@ -1,0 +1,273 @@
+<style>
+#ry-wrap{max-width:480px;margin:0 auto;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#fff;border-radius:12px;overflow:hidden;box-shadow:0 2px 20px rgba(0,0,0,0.08);}
+#ry-wrap *{box-sizing:border-box;margin:0;padding:0;}
+.ry-topbar{background:var(--ry-accent,#8B0000);color:#FFE4E4;padding:10px 20px;display:flex;justify-content:space-between;align-items:center;}
+.ry-topbar-title{font-size:14px;font-weight:600;letter-spacing:0.03em;}
+.ry-topbar-date{font-size:11px;opacity:0.8;}
+.ry-hero{padding:28px 20px 20px;border-bottom:1px solid #eee;background:var(--ry-accent,#8B0000);color:#FFE4E4;}
+.ry-hero-eyebrow{font-size:11px;opacity:0.7;margin-bottom:6px;letter-spacing:0.05em;text-transform:uppercase;}
+.ry-hero-month{font-size:40px;font-weight:700;line-height:1;margin-bottom:4px;}
+.ry-hero-meaning{font-size:17px;opacity:0.9;margin-bottom:10px;}
+.ry-hero-explainer{font-size:13px;opacity:0.75;line-height:1.6;margin-bottom:20px;}
+.ry-hero-today{display:flex;align-items:center;gap:12px;padding:12px;background:rgba(255,255,255,0.12);border-radius:10px;}
+.ry-today-num{width:38px;height:38px;border-radius:8px;background:rgba(255,255,255,0.2);display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:700;color:#FFE4E4;flex-shrink:0;}
+.ry-today-info h4{font-size:13px;font-weight:600;color:#FFE4E4;margin-bottom:1px;}
+.ry-today-info p{font-size:11px;color:rgba(255,228,228,0.75);}
+.ry-snav{display:flex;border-bottom:1px solid #eee;background:#fff;position:sticky;top:0;z-index:50;}
+.ry-snav-btn{flex:1;padding:11px 6px;font-size:12px;font-weight:600;color:#888;border:none;background:none;cursor:pointer;border-bottom:2px solid transparent;transition:all 0.2s;}
+.ry-snav-btn.active{color:var(--ry-accent,#8B0000);border-bottom-color:var(--ry-accent,#8B0000);}
+.ry-section{padding:22px 20px;border-bottom:1px solid #eee;}
+.ry-eyebrow{font-size:10px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:#999;margin-bottom:4px;}
+.ry-section-title{font-size:17px;font-weight:700;color:#1a1a1a;margin-bottom:16px;}
+.ry-verse-card{border-left:3px solid var(--ry-accent,#8B0000);padding:14px 16px;background:var(--ry-light,#FFF0F0);border-radius:0 8px 8px 0;margin-bottom:16px;}
+.ry-verse-day{font-size:10px;font-weight:700;color:var(--ry-accent,#8B0000);margin-bottom:5px;text-transform:uppercase;letter-spacing:0.05em;}
+.ry-verse-title{font-size:14px;font-weight:700;color:#1a1a1a;margin-bottom:8px;}
+.ry-verse-text{font-size:13px;color:#555;line-height:1.7;font-style:italic;margin-bottom:5px;}
+.ry-verse-ref{font-size:11px;color:var(--ry-accent,#8B0000);font-weight:600;}
+.ry-video{background:#f5f5f5;border-radius:10px;height:160px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;cursor:pointer;}
+.ry-play{width:44px;height:44px;border-radius:50%;background:var(--ry-accent,#8B0000);display:flex;align-items:center;justify-content:center;}
+.ry-play svg{fill:white;margin-left:3px;}
+.ry-video-label{font-size:12px;color:#888;}
+.ry-info-card{background:#f8f8f8;border-radius:10px;padding:14px;margin-bottom:10px;}
+.ry-info-card h3{font-size:13px;font-weight:700;color:#1a1a1a;margin-bottom:5px;}
+.ry-info-card p{font-size:12px;color:#555;line-height:1.6;}
+.ry-timeline{display:flex;flex-direction:column;}
+.ry-tl-item{display:flex;gap:10px;align-items:flex-start;padding:9px 0;border-bottom:1px solid #f0f0f0;}
+.ry-tl-item:last-child{border-bottom:none;}
+.ry-tl-pill{font-size:10px;font-weight:700;color:var(--ry-accent,#8B0000);background:var(--ry-light,#FFE4E4);padding:3px 7px;border-radius:4px;white-space:nowrap;}
+.ry-tl-text{font-size:12px;color:#333;line-height:1.5;padding-top:2px;}
+.ry-decl{padding:14px 16px;background:var(--ry-light,#FFF0F0);border-radius:10px;border:1px solid var(--ry-mid,#f0c0c0);}
+.ry-decl p{font-size:13px;color:#5a0000;line-height:1.8;font-style:italic;}
+.ry-cta{border-radius:12px;padding:18px;margin-bottom:12px;background:var(--ry-accent,#8B0000);}
+.ry-cta-eye{font-size:10px;letter-spacing:0.08em;text-transform:uppercase;color:rgba(255,228,228,0.65);margin-bottom:5px;}
+.ry-cta h3{font-size:16px;font-weight:700;color:#FFE4E4;margin-bottom:5px;}
+.ry-cta p{font-size:12px;color:rgba(255,228,228,0.75);line-height:1.5;margin-bottom:14px;}
+.ry-fmt-row{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:12px;}
+.ry-fmt-btn{padding:9px;border-radius:8px;border:1px solid rgba(255,255,255,0.2);background:rgba(255,255,255,0.1);color:#FFE4E4;font-size:12px;font-weight:600;cursor:pointer;text-align:center;}
+.ry-fmt-btn.sel{background:rgba(255,255,255,0.22);border-color:rgba(255,255,255,0.5);}
+.ry-fmt-btn span{display:block;font-size:10px;opacity:0.6;margin-top:2px;font-weight:400;}
+.ry-get-btn{width:100%;padding:11px;background:#FFE4E4;font-size:13px;font-weight:700;border:none;border-radius:8px;cursor:pointer;color:var(--ry-accent,#8B0000);}
+.ry-events{display:flex;flex-direction:column;gap:8px;margin-bottom:12px;}
+.ry-event{display:flex;justify-content:space-between;align-items:center;padding:11px 13px;border:1px solid #eee;border-radius:9px;}
+.ry-event-info h4{font-size:13px;font-weight:700;color:#1a1a1a;margin-bottom:2px;}
+.ry-event-info p{font-size:11px;color:#888;}
+.ry-event-btn{font-size:11px;font-weight:700;padding:5px 13px;border-radius:20px;background:var(--ry-accent,#8B0000);color:white;border:none;cursor:pointer;white-space:nowrap;}
+.ry-event-btn.soft{background:#f0f0f0;color:#666;border:1px solid #ddd;}
+.ry-email-card{border:1px solid #eee;border-radius:10px;padding:16px;}
+.ry-email-card h3{font-size:14px;font-weight:700;color:#1a1a1a;margin-bottom:4px;}
+.ry-email-card p{font-size:12px;color:#888;margin-bottom:10px;line-height:1.5;}
+.ry-email-row{display:flex;gap:8px;}
+.ry-email-row input{flex:1;font-size:12px;padding:9px 11px;border-radius:8px;border:1px solid #ddd;color:#333;}
+.ry-email-row button{font-size:12px;font-weight:700;padding:9px 14px;border-radius:8px;background:var(--ry-accent,#8B0000);color:white;border:none;cursor:pointer;}
+.ry-months-wrap{padding:18px 20px;}
+.ry-months-eye{font-size:10px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:#999;margin-bottom:10px;}
+.ry-months-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:5px;}
+.ry-chip{padding:7px 3px;text-align:center;border-radius:8px;font-size:10px;font-weight:700;cursor:pointer;}
+.ry-footer{padding:12px 20px;border-top:1px solid #eee;display:flex;justify-content:space-between;align-items:center;}
+.ry-footer p{font-size:11px;color:#aaa;}
+.ry-footer a{font-size:11px;color:var(--ry-accent,#8B0000);text-decoration:none;font-weight:600;}
+</style>
+
+<div id="ry-wrap">
+  <div class="ry-topbar">
+    <div class="ry-topbar-title">The Remnant Year</div>
+    <div class="ry-topbar-date" id="ry-topbar-date"></div>
+  </div>
+  <div class="ry-hero">
+    <div class="ry-hero-eyebrow" id="ry-eyebrow"></div>
+    <div class="ry-hero-month" id="ry-month"></div>
+    <div class="ry-hero-meaning" id="ry-meaning"></div>
+    <div class="ry-hero-explainer" id="ry-explainer"></div>
+    <div class="ry-hero-today">
+      <div class="ry-today-num" id="ry-daynum"></div>
+      <div class="ry-today-info">
+        <h4 id="ry-devtitle"></h4>
+        <p>Today's devotional</p>
+      </div>
+    </div>
+  </div>
+  <div class="ry-snav">
+    <button class="ry-snav-btn active" onclick="ryGoTo('ry-today',this)">Today</button>
+    <button class="ry-snav-btn" onclick="ryGoTo('ry-month-sec',this)">This month</button>
+    <button class="ry-snav-btn" onclick="ryGoTo('ry-deeper',this)">Go deeper</button>
+  </div>
+  <div class="ry-section" id="ry-today">
+    <div class="ry-eyebrow" id="ry-today-eye"></div>
+    <div class="ry-section-title" id="ry-today-title"></div>
+    <div class="ry-verse-card">
+      <div class="ry-verse-day" id="ry-vday"></div>
+      <div class="ry-verse-title" id="ry-vtitle"></div>
+      <div class="ry-verse-text" id="ry-vtext"></div>
+      <div class="ry-verse-ref" id="ry-vref"></div>
+    </div>
+    <div class="ry-video">
+      <div class="ry-play"><svg width="14" height="14" viewBox="0 0 16 16"><polygon points="5,2 14,8 5,14"/></svg></div>
+      <div class="ry-video-label" id="ry-vlabel"></div>
+    </div>
+  </div>
+  <div class="ry-section" id="ry-month-sec">
+    <div class="ry-eyebrow">This month</div>
+    <div class="ry-section-title" id="ry-month-title"></div>
+    <div class="ry-info-card"><h3 id="ry-i1t"></h3><p id="ry-i1b"></p></div>
+    <div class="ry-info-card"><h3 id="ry-i2t"></h3><p id="ry-i2b"></p></div>
+    <div class="ry-eyebrow" style="margin-bottom:10px;margin-top:4px;" id="ry-tllabel"></div>
+    <div class="ry-timeline" id="ry-timeline"></div>
+    <div style="margin-top:18px;margin-bottom:6px;" class="ry-eyebrow">Declare this month</div>
+    <div class="ry-decl"><p id="ry-decl"></p></div>
+  </div>
+  <div class="ry-section" id="ry-deeper">
+    <div class="ry-eyebrow">Go deeper</div>
+    <div class="ry-section-title" id="ry-deeper-title"></div>
+    <div class="ry-cta">
+      <div class="ry-cta-eye">Times &amp; Seasons Devotional</div>
+      <h3 id="ry-cta-h"></h3>
+      <p id="ry-cta-p"></p>
+      <div class="ry-fmt-row">
+        <div class="ry-fmt-btn sel" onclick="rySelFmt(this)">PDF Download<span>Instant access</span></div>
+        <div class="ry-fmt-btn" onclick="rySelFmt(this)">Printed Copy<span>Ships to you</span></div>
+      </div>
+      <button class="ry-get-btn" id="ry-getbtn"></button>
+    </div>
+    <div class="ry-eyebrow" style="margin-bottom:10px;">Community events</div>
+    <div class="ry-events" id="ry-events"></div>
+    <div class="ry-email-card" style="margin-top:10px;">
+      <h3>Follow the biblical year</h3>
+      <p>Each new month we send you the key dates, declaration, and devotional preview.</p>
+      <div class="ry-email-row"><input type="email" placeholder="your@email.com"/><button>Join</button></div>
+    </div>
+  </div>
+  <div class="ry-months-wrap">
+    <div class="ry-months-eye">Browse all 12 months</div>
+    <div class="ry-months-grid" id="ry-chips"></div>
+  </div>
+  <div class="ry-footer"><p>© 2025 The Remnant Year</p><a href="#">YouTube ↗</a></div>
+</div>
+
+<script>
+(function(){
+var YEARS=[
+  {year:5786,nisan1:new Date(2026,2,19),months:[30,29,30,29,30,29,30,30,30,29,30,29]},
+  {year:5787,nisan1:new Date(2027,3,7),months:[30,29,30,29,30,29,30,29,30,29,30,29]},
+  {year:5788,nisan1:new Date(2028,2,26),months:[30,29,30,29,30,29,30,30,29,29,30,29]},
+  {year:5789,nisan1:new Date(2029,2,16),months:[30,29,30,29,30,29,30,29,30,29,30,29]},
+  {year:5790,nisan1:new Date(2030,3,3),months:[30,29,30,29,30,29,30,30,30,29,30,29]}
+];
+var MNAMES=['Nisan','Iyar','Sivan','Tammuz','Av','Elul','Tishrei','Cheshvan','Kislev','Tevet','Shevat','Adar'];
+function getHeb(date){
+  var today=new Date(date.getFullYear(),date.getMonth(),date.getDate());
+  for(var i=0;i<YEARS.length;i++){
+    var hy=YEARS[i];
+    var cursor=new Date(hy.nisan1);
+    for(var mi=0;mi<12;mi++){
+      var ms=new Date(cursor);
+      var me=new Date(cursor);
+      me.setDate(me.getDate()+hy.months[mi]);
+      if(today>=ms&&today<me){
+        var day=Math.floor((today-ms)/86400000)+1;
+        return{month:MNAMES[mi],day:day,year:hy.year,idx:mi};
+      }
+      cursor.setDate(cursor.getDate()+hy.months[mi]);
+    }
+  }
+  return null;
+}
+var MD={
+  Nisan:{accent:'#8B0000',light:'#FFF0F0',mid:'#f0c0c0',meaning:'The month of new beginnings',explainer:'We are in the first month of the biblical Hebrew year — a season God set apart for redemption, miracles, and fresh starts. This is Passover season.',i1:{t:'The heart of this month',b:'Nisan is about repentance, redemption, and the beginning of miracles. The Hebrew letter Hei (ה) — meaning breath and praise — is written into the very shape of the Passover doorpost. God breathes new purpose into you this month.'},i2:{t:'What to watch for',b:'Watch your speech this month. Praise goes first — Judah always led Israel into battle with worship, not weapons. This is a month to express your deepest feelings and insights. Put your best foot forward.'},timeline:[{p:'Nisan 10',t:'Jesus enters Jerusalem · Passover lamb selected'},{p:'Nisan 14',t:'Passover — the blood of the lamb on the doorposts'},{p:'Nisan 15',t:'Festival of Unleavened Bread begins'},{p:'Nisan 17',t:'Feast of First Fruits · Jesus rose from the dead'}],decl:'Freedom is coming to me! I receive every miracle and every harvest coming my way! I will put on the righteousness of Jesus, being bold as a lion in worship and warfare! This is my season of inheritance! Everywhere I place my foot, I possess the land.',events:[{n:'Passover Seder',d:'April 2 · 6:00 PM',r:true},{n:'First Fruits Celebration',d:'April 5 · 10:00 AM',r:true},{n:'Pentecost Study Night',d:'Coming in Sivan',r:false}]},
+  Iyar:{accent:'#1a3a8c',light:'#EEF3FF',mid:'#b0c4f0',meaning:'The month of natural healing',explainer:'We are in the second month of the biblical Hebrew year — called Ziv, meaning radiance. This is a season of healing, discernment, and divine secrets.',i1:{t:'The heart of this month',b:'Iyar is the month of natural healing. Its very name is an acronym for "I AM God your Healer." It is a time to process thoughts, quiet the soul, and receive spiritual wisdom.'},i2:{t:'What to watch for',b:'Pay attention to numbers that come in dreams or visions. Issachar understood the times and seasons — this is your month to understand secrets.'},timeline:[{p:'Iyar',t:'Month of natural healing — no major feasts, a season of restoration'},{p:'Lag BaOmer',t:'33rd day of the Omer — a day of celebration'}],decl:'I receive divine healing in my body, soul, and spirit this month. I am sensitive to the voice of God. I understand the times and seasons. I walk in wisdom and discernment.',events:[]},
+  Sivan:{accent:'#555',light:'#F5F5F5',mid:'#ccc',meaning:'The month of giving',explainer:'We are in the third month of the biblical Hebrew year. Sivan is the month of Pentecost — when God gave the Torah on Sinai and the Holy Spirit was poured out on the early church.',i1:{t:'The heart of this month',b:'Sivan is the month of GIVING. Connect your talk to your walk. Be merciful. Receive your boundaries from God. Alignment is everything this month.'},i2:{t:'What to watch for',b:"This is the businessperson's month. Watch for opportunities to move from one level of strength to the next."},timeline:[{p:'Sivan 6',t:'Shavuot (Pentecost) — giving of the Torah · Outpouring of the Holy Spirit'}],decl:"I am aligned with God's word and His Spirit. I connect my talk to my walk. I am a giver this month. I receive my boundaries and walk in them with confidence.",events:[]},
+  Tammuz:{accent:'#8B0000',light:'#FFF0F0',mid:'#f0c0c0',meaning:'The month of vision',explainer:'We are in the fourth month of the biblical Hebrew year. Tammuz is a month to guard your heart and your eyes — a time for vision and worship.',i1:{t:'The heart of this month',b:'Tammuz is the Film Strip month — watch your progress and adjust. This is a time for vision. See what you see and look again. Covenant alignment is very important.'},i2:{t:'What to watch for',b:'Notice all your agreements this month. This is a month to WORSHIP — or to develop a golden calf. What you fix your eyes on will define your trajectory.'},timeline:[{p:'17 Tammuz',t:"Fast of Tammuz — breach of Jerusalem's walls · Golden calf incident"}],decl:'I guard my heart and my eyes. I fix my gaze on Jesus. I worship in spirit and in truth. My vision is clear and my covenant is strong.',events:[]},
+  Av:{accent:'#1a5e1a',light:'#F0FFF0',mid:'#a0d0a0',meaning:'The month of the lion',explainer:'We are in the fifth month of the biblical Hebrew year. Av is a month where God destroys in order to reconstruct. The lion of Judah roars this month.',i1:{t:'The heart of this month',b:'Av is a month where you metamorphose or disintegrate. The letter Tet resembles a womb — what God is birthing in you requires you to listen carefully.'},i2:{t:'What to watch for',b:'Key impressions will come to you this month. God destroys so He can reconstruct. Let Him tear down what needs to come down.'},timeline:[{p:'9 Av',t:"Tisha B'Av — destruction of both Temples · A day of mourning"}],decl:'I hear the voice of God clearly. I embrace the reconstruction God is doing in my life. I metamorphose — I do not disintegrate. The Lion of Judah roars on my behalf.',events:[]},
+  Elul:{accent:'#555',light:'#F5F5F5',mid:'#ccc',meaning:'The month of the King in the field',explainer:'We are in the sixth month of the biblical Hebrew year. Elul is a season of preparation — the King comes down from His throne and walks in the field. He is near.',i1:{t:'The heart of this month',b:'Elul is the mother month — a month of nurturing. The King is in the field, approachable and near. Fix what has been broken. Find your place in the company of the Lord.'},i2:{t:'What to watch for',b:'Faith requires action this month. Prepare yourself for the High Holy Days coming in Tishrei.'},timeline:[{p:'Elul 1',t:'Beginning of 40 days of repentance leading to Yom Kippur'},{p:'Elul 29',t:'Erev Rosh Hashana — Tishrei begins at sundown'}],decl:'The King is in the field and I approach Him with boldness. I fix what is broken. I find my place in His company. My faith produces action this month.',events:[]},
+  Tishrei:{accent:'#1a1a2e',light:'#EEEEFF',mid:'#9090c0',meaning:'The month of fullness',explainer:'We are in the seventh month of the biblical Hebrew year — the most feast-filled month of the year. Trumpets sound, atonement comes, and Tabernacles is celebrated.',i1:{t:'The heart of this month',b:'Tishrei is the 7th month — completion and fullness. This is the month of the Fall Feasts. Return to God and experience His glory. Press through to touch Him.'},i2:{t:'What to watch for',b:'This month is linked with awakening and removing that which keeps you from returning to God. Press in with praise and repentance.'},timeline:[{p:'Tishrei 1',t:'Rosh Hashana — Feast of Trumpets'},{p:'Tishrei 10',t:'Yom Kippur — Day of Atonement'},{p:'Tishrei 15',t:'Sukkot — Feast of Tabernacles begins'}],decl:'I return to God with my whole heart. I press through every barrier to touch His garment. I receive His atonement and walk in fullness. The trumpet sounds and I respond.',events:[]},
+  Cheshvan:{accent:'#4a1a5e',light:'#F5EEFF',mid:'#c090e0',meaning:'The month of the Messiah',explainer:'We are in the eighth month of the biblical Hebrew year. Cheshvan is the only month with no holidays — reserved by ancient tradition for the Messiah.',i1:{t:'The heart of this month',b:"The number 8 signifies eternal revelation and new beginning. The flood began and ended in Cheshvan. Noah's sacrifice revealed God's rainbow covenant of mercy."},i2:{t:'What to watch for',b:'This is a time for digesting what you have heard — letting the word go deep. The letter Nun symbolizes the Messiah. Keep your eyes on Him.'},timeline:[{p:'Cheshvan',t:'No appointed feasts — a month reserved and waiting'},{p:'Cheshvan',t:"Noah's flood began and ended here · The rainbow covenant"}],decl:"I wait on the Lord. I digest what He has spoken. I keep my eyes on Jesus the Messiah. The rainbow of His covenant covers my life and family.",events:[]},
+  Kislev:{accent:'#2c5f8a',light:'#EEF5FF',mid:'#90b8e0',meaning:'The month of dreams and trust',explainer:'We are in the ninth month of the biblical Hebrew year. Kislev is the month of Chanukah — the Festival of Lights. A time to fight against darkness and trust God completely.',i1:{t:'The heart of this month',b:'Kislev is the month of Benjamin — most gifted with the bow, born in the Promised Land. The letter Samekh means trust, support, and coming full circle. Enter a new level of trust and rest.'},i2:{t:'What to watch for',b:'Develop your warfare strategies. Watch Israel closely. Ask for rivers of life to flow over your circumstances.'},timeline:[{p:'Kislev 25',t:'Chanukah begins — Festival of Lights, 8 nights'}],decl:'I trust God completely. I enter a new level of rest. The light of God shines through me and darkness cannot overcome it. I declare tranquility and peace.',events:[]},
+  Tevet:{accent:'#1a3a5c',light:'#EEF3FF',mid:'#90a8d0',meaning:'The month of righteous anger',explainer:'We are in the tenth month of the biblical Hebrew year. Tevet is a month of endings — Chanukah concludes and a solemn fast marks the siege of Jerusalem. In destruction there is mercy.',i1:{t:'The heart of this month',b:'The letter Ayin means eye — let your good eye see this month. War with the evil eye. Grow up and mature in God. The tribe of Dan is about judging rightly.'},i2:{t:'What to watch for',b:'This is a good month to fast and pray — to purify and refocus. Pray for your leaders. In every place of destruction declare mercy.'},timeline:[{p:'Tevet 1-2',t:'Chanukah concludes'},{p:'10 Tevet',t:'Fast of Tevet — siege of Jerusalem began'}],decl:'My eye is good and full of light. I judge rightly. I pray for my leaders and my nation. In every place of destruction I declare mercy. I grow up and mature in God.',events:[]},
+  Shevat:{accent:'#5a7a2a',light:'#F0FFF0',mid:'#a0c080',meaning:'The month of the olive tree',explainer:'We are in the eleventh month of the biblical Hebrew year. Shevat is the month of Asher — pleasure, happiness, and the olive tree blooming.',i1:{t:'The heart of this month',b:'Righteousness becomes your foundation. The letter Tzadik symbolizes the righteous one. How will your olive tree blossom? Develop the plan to sustain the generations.'},i2:{t:'What to watch for',b:'What you meditate on produces nourishment for your future. Shout: my blessings are on the way!'},timeline:[{p:'15 Shevat',t:"Tu B'Shevat — New Year of the Trees · Time to plant"}],decl:'Righteousness is my foundation. My olive tree blossoms. My blessings are on the way! My roots go deep into the water of life and I bear fruit in every season.',events:[]},
+  Adar:{accent:'#5a1a6e',light:'#F8EEFF',mid:'#d090f0',meaning:'The month of joy and strength',explainer:"We are in the twelfth month of the biblical Hebrew year. Adar means strength — when Adar enters, joy increases. Purim celebrates God's hidden hand delivering His people.",i1:{t:'The heart of this month',b:'Adar is the month of Naphtali — sweetness is to me. The letter Kuf speaks of removing the masquerade and entering joy. Your true identity will be revealed. Any curse set against you will be overturned.'},i2:{t:'What to watch for',b:"This is a good month but also a dangerous one. Guard against idolatry. God's hidden hand is working on your behalf."},timeline:[{p:'Purim',t:'Feast of Esther — Adar 14 · Celebration of God\'s hidden deliverance'},{p:'Adar 29',t:'End of the Hebrew year · Nisan begins at sundown'}],decl:"Joy is my strength. My true identity is revealed. Every decree set against me is broken. God's hidden hand is working on my behalf. I enter into the joy of the Lord.",events:[]}
+};
+var NISAN=[
+  {d:1,t:'The Joy Set Before Him',r:'Hebrews 12:2',s:'Because his heart was focused on the joy of knowing that you would be his, he endured the agony of the cross.'},
+  {d:2,t:'The Letter Hei',r:'1 Peter 2:24',s:'His innocent blood was shed as payment for our sin, satisfying the wrath of a just and Holy God.'},
+  {d:3,t:'Tribe of Judah',r:'Genesis 29:35',s:'This time I will praise the Lord!'},
+  {d:4,t:'The Constellation Aries',r:'Isaiah 53:5',s:'He was wounded for our transgressions, bruised for our iniquities; and with his stripes we are healed.'},
+  {d:5,t:'Jesus, the Greater Moses',r:'Luke 4:18',s:'The Spirit of the Lord is upon me, because he has anointed me to proclaim good news to the poor.'},
+  {d:6,t:'Come Out of Egypt',r:'Exodus 6:6',s:'I am the Lord, and I will bring you out from under the burdens of the Egyptians and free you from bondage.'},
+  {d:7,t:'Cycle of Redemption',r:'1 Peter 1:3',s:'We are reborn to experience a living, energetic hope through the resurrection of Jesus Christ from the dead.'},
+  {d:8,t:'Take Hold of the Blessings',r:'Deuteronomy 28:2',s:'All these blessings will come on you and accompany you if you obey the Lord your God.'},
+  {d:9,t:'Spiritual Rebirth',r:'John 3:5',s:'No one can enter the kingdom of God unless they are born of water and the Spirit.'},
+  {d:10,t:'The King on a Donkey',r:'Zechariah 9:9',s:'See, your king comes to you, righteous and victorious, lowly and riding on a donkey.'},
+  {d:11,t:'Cleanse Your Temple',r:'1 Corinthians 3:16',s:"Don't you know that you yourselves are God's temple and that God's Spirit dwells in your midst?"},
+  {d:12,t:'No Longer a Slave',r:'Romans 6:6',s:'Our old self was crucified with him so that we should no longer be slaves to sin.'},
+  {d:13,t:'The Ultimate Sacrifice',r:'John 3:16',s:'God so loved the world that he gave his one and only Son, that whoever believes in him shall not perish.'},
+  {d:14,t:'Passover',r:'Exodus 12:13',s:'When I see the blood, I will pass over you.'},
+  {d:15,t:'Festival of Unleavened Bread',r:'1 Corinthians 5:7',s:'Christ, our Passover lamb, has been sacrificed. Let us keep the Festival with sincerity and truth.'},
+  {d:16,t:'His Blood and His Body',r:'Luke 22:19',s:'This is my body given for you; do this in remembrance of me.'},
+  {d:17,t:'He Resurrects Me',r:'1 Peter 1:3',s:'His fountain of mercy has given us a new life — we are reborn through the resurrection of Jesus Christ.'},
+  {d:18,t:'Thank God for Deliverance',r:'Psalm 107:2',s:'Let the redeemed of the Lord tell their story — those he redeemed from the hand of the foe.'},
+  {d:19,t:'He Hears Your Cries',r:'Exodus 3:7',s:'I have seen the misery of my people. I have heard them crying out, and I am concerned about their suffering.'},
+  {d:20,t:'Feast of First Fruits',r:'1 Corinthians 15:20',s:'Christ has indeed been raised from the dead, the firstfruits of those who have fallen asleep.'},
+  {d:21,t:'Let the Remnant Sound Go Forth',r:'Isaiah 27:13',s:'In that day a great trumpet will sound.'},
+  {d:22,t:'War for Your Promises',r:'2 Corinthians 10:4',s:'The weapons we fight with have divine power to demolish strongholds.'},
+  {d:23,t:'Judah Goes First',r:'Judges 20:18',s:'Which of us is to go up first to fight? The Lord replied, Judah shall go first.'},
+  {d:24,t:'No More Wilderness',r:'Joshua 1:3',s:'I will give you every place where you set your foot, as I promised Moses.'},
+  {d:25,t:'A New Season of Inheritance',r:'Ephesians 1:11',s:'In him we were also chosen, predestined according to the plan of him who works out everything.'},
+  {d:26,t:'Your Harvest Is Coming',r:'Galatians 6:9',s:'Let us not become weary in doing good, for at the proper time we will reap a harvest if we do not give up.'},
+  {d:27,t:'Let the Lion Roar',r:'Amos 3:8',s:'The lion has roared — who will not fear? The Sovereign Lord has spoken — who can but prophesy?'},
+  {d:28,t:'Where I Step, I Possess',r:'Deuteronomy 11:24',s:'Every place where you set your foot will be yours.'},
+  {d:29,t:'Violent Praise',r:'Matthew 11:12',s:'The kingdom of heaven has been subjected to violence, and violent people have been raiding it.'},
+  {d:30,t:'Apply the Blood of Jesus',r:'Revelation 12:11',s:'They triumphed over him by the blood of the Lamb and by the word of their testimony.'}
+];
+var CHIPS=[
+  {n:'Tishrei',bg:'#1a1a2e',fg:'#d4b8ff'},{n:'Cheshvan',bg:'#4a1a5e',fg:'#e8c8ff'},
+  {n:'Kislev',bg:'#2c5f8a',fg:'#E6F1FB'},{n:'Tevet',bg:'#1a3a5c',fg:'#a8d4f0'},
+  {n:'Shevat',bg:'#5a7a2a',fg:'#e8f4c8'},{n:'Adar',bg:'#5a1a6e',fg:'#f0d0ff'},
+  {n:'Nisan',bg:'#8B0000',fg:'#FFE4E4'},{n:'Iyar',bg:'#1a3a8c',fg:'#c0d4ff'},
+  {n:'Sivan',bg:'#888780',fg:'#F1EFE8'},{n:'Tammuz',bg:'#8B0000',fg:'#FFE4E4'},
+  {n:'Av',bg:'#1a5e1a',fg:'#c8f0c8'},{n:'Elul',bg:'#555',fg:'#e8e8e8'}
+];
+var now=new Date();
+var heb=getHeb(now);
+if(!heb)return;
+var m=MD[heb.month]||MD['Nisan'];
+var wrap=document.getElementById('ry-wrap');
+wrap.style.setProperty('--ry-accent',m.accent);
+wrap.style.setProperty('--ry-light',m.light);
+wrap.style.setProperty('--ry-mid',m.mid);
+var gstr=now.toLocaleDateString('en-US',{month:'long',day:'numeric',year:'numeric'});
+document.getElementById('ry-topbar-date').textContent=gstr+' · '+heb.month+' '+heb.day;
+document.getElementById('ry-eyebrow').textContent='Month '+((heb.idx<6?heb.idx+1:heb.idx-5))+' · Biblical Hebrew Year '+heb.year;
+document.getElementById('ry-month').textContent=heb.month;
+document.getElementById('ry-meaning').textContent=m.meaning;
+document.getElementById('ry-explainer').textContent=m.explainer;
+document.getElementById('ry-daynum').textContent=heb.day;
+var dev={t:'Devotional for day '+heb.day,r:'',s:'Upload the '+heb.month+' devotional to see today\'s scripture.'};
+if(heb.month==='Nisan'&&NISAN[heb.day-1]){var nd=NISAN[Math.min(heb.day,30)-1];dev={t:nd.t,r:nd.r,s:nd.s};}
+document.getElementById('ry-devtitle').textContent=dev.t;
+document.getElementById('ry-today-eye').textContent='Today in '+heb.month;
+document.getElementById('ry-today-title').textContent='Day '+heb.day+' — '+dev.t;
+document.getElementById('ry-vday').textContent=heb.month+' '+heb.day+', '+heb.year;
+document.getElementById('ry-vtitle').textContent=dev.t;
+document.getElementById('ry-vtext').textContent='"'+dev.s+'"';
+document.getElementById('ry-vref').textContent=dev.r;
+document.getElementById('ry-vlabel').textContent='Watch: The month of '+heb.month+' explained';
+document.getElementById('ry-month-title').textContent='What '+heb.month+' means for you';
+document.getElementById('ry-i1t').textContent=m.i1.t;
+document.getElementById('ry-i1b').textContent=m.i1.b;
+document.getElementById('ry-i2t').textContent=m.i2.t;
+document.getElementById('ry-i2b').textContent=m.i2.b;
+document.getElementById('ry-tllabel').textContent='Key dates in '+heb.month;
+document.getElementById('ry-timeline').innerHTML=m.timeline.map(function(t){return'<div class="ry-tl-item"><div class="ry-tl-pill">'+t.p+'</div><div class="ry-tl-text">'+t.t+'</div></div>';}).join('');
+document.getElementById('ry-decl').textContent='"'+m.decl+'"';
+document.getElementById('ry-deeper-title').textContent='30 days in '+heb.month;
+document.getElementById('ry-cta-h').textContent=heb.month+' — 30 days of scripture, prayer & declaration';
+document.getElementById('ry-cta-p').textContent='A daily devotional written specifically for this month. Each day has a scripture, teaching, and prayer you can declare out loud.';
+document.getElementById('ry-getbtn').textContent='Get the '+heb.month+' devotional ↗';
+var ev=document.getElementById('ry-events');
+ev.innerHTML=m.events&&m.events.length?m.events.map(function(e){return'<div class="ry-event"><div class="ry-event-info"><h4>'+e.n+'</h4><p>'+e.d+'</p></div><button class="ry-event-btn'+(e.r?'':' soft')+'">'+(e.r?'RSVP':'Notify me')+'</button></div>';}).join(''):'<p style="font-size:13px;color:#888;">No community events scheduled yet for this month.</p>';
+document.getElementById('ry-chips').innerHTML=CHIPS.map(function(c){return'<div class="ry-chip" style="background:'+c.bg+';color:'+c.fg+';">'+c.n+'</div>';}).join('');
+})();
+function ryGoTo(id,btn){document.getElementById(id).scrollIntoView({behavior:'smooth'});document.querySelectorAll('.ry-snav-btn').forEach(function(b){b.classList.remove('active');});btn.classList.add('active');}
+function rySelFmt(el){document.querySelectorAll('.ry-fmt-btn').forEach(function(b){b.classList.remove('sel');});el.classList.add('sel');}
+var ryObs=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting){var m={'ry-today':0,'ry-month-sec':1,'ry-deeper':2};var i=m[e.target.id];if(i!==undefined){document.querySelectorAll('.ry-snav-btn').forEach(function(b){b.classList.remove('active');});document.querySelectorAll('.ry-snav-btn')[i].classList.add('active');}}});},{threshold:0.25});
+['ry-today','ry-month-sec','ry-deeper'].forEach(function(id){var el=document.getElementById(id);if(el)ryObs.observe(el);});
+</script>
